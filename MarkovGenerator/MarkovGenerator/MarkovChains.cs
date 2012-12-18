@@ -59,7 +59,7 @@ namespace ProgrammingChallenge
             {
                 if (!this.ContainsKey(firstWord))
                 {
-                    // Add a new key for outter dictionary
+                    /* Add a new key for outer dictionary */
 
                     list = new List<T>();
                     list.Add(thirdWord);
@@ -71,7 +71,7 @@ namespace ProgrammingChallenge
                 }
                 else
                 {
-                    // Update existing key for outter dictionary
+                    /* Update existing key for outer dictionary */
 
                     dictionary = this[firstWord];
                     Debug.Assert(dictionary != null);
