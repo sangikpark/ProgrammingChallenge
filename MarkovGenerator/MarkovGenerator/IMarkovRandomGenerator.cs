@@ -9,8 +9,6 @@ namespace ProgrammingChallenge
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
     /// IMarkovRandomGenerator interface.
@@ -28,7 +26,7 @@ namespace ProgrammingChallenge
         }
 
         /// <summary>
-        /// Creates Markov chains from the input T data.
+        /// Creates the Markov chains from the input T data.
         /// </summary>
         /// <param name="inputText">An input T data</param>
         void CreateChains(T inputText);
