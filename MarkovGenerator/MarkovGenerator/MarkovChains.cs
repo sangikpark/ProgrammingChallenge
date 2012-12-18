@@ -31,6 +31,7 @@ namespace ProgrammingChallenge
     /// <typeparam name="T">The type of the Markov chains</typeparam>
     public class MarkovChains<T> : Dictionary<T, Dictionary<T, List<T>>>
     {
+        #region Public Methods
         /// <summary>
         /// Adds new data entry to the dictionary.
         /// </summary>
@@ -96,5 +97,6 @@ namespace ProgrammingChallenge
                 throw;
             }
         }
+        #endregion
     }
 }

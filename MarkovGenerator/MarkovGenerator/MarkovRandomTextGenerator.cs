@@ -20,11 +20,14 @@ namespace ProgrammingChallenge
     /// </summary>    
     public class MarkovRandomTextGenerator : IMarkovRandomGenerator<string>
     {
+        #region Private Fields
         /// <summary>
         /// Constant for the starting word.
         /// </summary>
         private const string StartingWord = "(START)";
+        #endregion
 
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the MarkovRandomTextGenerator class.
         /// </summary>
@@ -42,7 +45,9 @@ namespace ProgrammingChallenge
             this.Chains = new MarkovChains<string>();
             this.CreateChains(inputText);
         }
+        #endregion
 
+        #region Public Properties
         /// <summary>
         /// Gets or sets for Markov chains.
         /// </summary>
@@ -51,7 +56,9 @@ namespace ProgrammingChallenge
             get;
             set;
         }
+        #endregion
 
+        #region Public Methods
         /// <summary>
         /// Creates Markov chains from the input text string.
         /// </summary>
@@ -192,7 +199,9 @@ namespace ProgrammingChallenge
 
             return outputTextBuilder.ToString();
         }
+        #endregion
 
+        #region Private Methods
         /// <summary>
         /// Tokenizes input text string.
         /// 1. Removes non alphabetic letters except some punctuations such as sentence enders.
@@ -232,5 +241,6 @@ namespace ProgrammingChallenge
 
             return false;
         }
+        #endregion
     }
 }
