@@ -13,6 +13,7 @@ namespace ProgrammingChallenge
     using System.Diagnostics;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Text;
 
     /// <summary>
     /// A MarkovRandomTextGenerator class
@@ -131,7 +132,7 @@ namespace ProgrammingChallenge
                 throw new InvalidOperationException("Markov chains are null.");
             }
 
-            string outputText = null;
+            StringBuilder outputTextBuilder = new StringBuilder();
             string firstWord = StartingWord, secondWord = null, thirdWord = null;
 
             bool isStartingWord = true;
@@ -161,7 +162,7 @@ namespace ProgrammingChallenge
                         thirdWord = list.ElementAt(random.Next(list.Count));
                         Debug.Assert(!string.IsNullOrEmpty(thirdWord));
 
-                        outputText += secondWord;
+                        outputTextBuilder.Append(secondWord);
 
                         isStartingWord = false;
                     }
@@ -178,7 +179,8 @@ namespace ProgrammingChallenge
                     throw;
                 }
 
-                outputText += " " + thirdWord;
+                outputTextBuilder.Append(" ");
+                outputTextBuilder.Append(thirdWord);
 
                 if (IsEndingSentence(thirdWord))
                 {
@@ -190,10 +192,10 @@ namespace ProgrammingChallenge
             }
 
             // Removes white spaces from some punctuations such as sentence enders.
-            outputText = outputText.Replace(" .", ".").Replace(" ?", "?").Replace(" !", "!");
-            outputText = outputText.Replace(" ,", ",").Replace(" ;", ";").Replace(" :", ":");
+            outputTextBuilder.Replace(" .", ".").Replace(" ?", "?").Replace(" !", "!");
+            outputTextBuilder.Replace(" ,", ",").Replace(" ;", ";").Replace(" :", ":");
 
-            return outputText;
+            return outputTextBuilder.ToString();
         }
 
         /// <summary>
