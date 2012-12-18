@@ -12,8 +12,8 @@ namespace ProgrammingChallenge
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
-    using System.Text.RegularExpressions;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// A MarkovRandomTextGenerator class
@@ -91,14 +91,7 @@ namespace ProgrammingChallenge
 
                 try
                 {
-                    if (!this.Chains.ContainsKey(firstWord))
-                    {
-                        this.Chains.Add(firstWord, secondWord, thirdWord);
-                    }
-                    else
-                    {
-                        this.Chains.Update(firstWord, secondWord, thirdWord);
-                    }
+                    this.Chains.Add(firstWord, secondWord, thirdWord);
                 }
                 catch (Exception)
                 {
@@ -143,6 +136,8 @@ namespace ProgrammingChallenge
 
             Random random = new Random();
 
+            // REVIEW: We can use the while (true) loop here because all sentences
+            // end with sentence enders,
             while (true)
             {
                 try

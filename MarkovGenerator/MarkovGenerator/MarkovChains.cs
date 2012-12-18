@@ -43,70 +43,52 @@ namespace ProgrammingChallenge
             {
                 throw new ArgumentNullException("firstWord");
             }
-            if (secondWord == null)
+            else if (secondWord == null)
             {
                 throw new ArgumentNullException("secondWord");
             }
-            if (thirdWord == null)
+            else if (thirdWord == null)
             {
                 throw new ArgumentNullException("thirdWord");
             }
 
-            try
-            {
-                List<T> list = new List<T>();
-                list.Add(thirdWord);
-
-                Dictionary<T, List<T>> dictionary = new Dictionary<T, List<T>>();
-                dictionary.Add(secondWord, list);
-
-                this.Add(firstWord, dictionary);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Updates data entry in the dictionary (when the first word already exists).
-        /// </summary>
-        /// <param name="firstWord">The fist word</param>
-        /// <param name="secondWord">The second word</param>
-        /// <param name="thirdWord">The third word</param>
-        public void Update(T firstWord, T secondWord, T thirdWord)
-        {
-            if (firstWord == null)
-            {
-                throw new ArgumentNullException("firstWord");
-            }
-            if (secondWord == null)
-            {
-                throw new ArgumentNullException("secondWord");
-            }
-            if (thirdWord == null)
-            {
-                throw new ArgumentNullException("thirdWord");
-            }
+            List<T> list = null;
+            Dictionary<T, List<T>> dictionary = null;
 
             try
             {
-                List<T> list = null;
-                Dictionary<T, List<T>> dictionary = this[firstWord];
-                Debug.Assert(dictionary != null);
-
-                if (!dictionary.ContainsKey(secondWord))
+                if (!this.ContainsKey(firstWord))
                 {
+                    // Add a new key for outter dictionary
+
                     list = new List<T>();
                     list.Add(thirdWord);
 
+                    dictionary = new Dictionary<T, List<T>>();
                     dictionary.Add(secondWord, list);
+
+                    this.Add(firstWord, dictionary);
                 }
                 else
                 {
-                    list = dictionary[secondWord];
-                    Debug.Assert(list != null);
-                    list.Add(thirdWord);
+                    // Update existing key for outter dictionary
+
+                    dictionary = this[firstWord];
+                    Debug.Assert(dictionary != null);
+
+                    if (!dictionary.ContainsKey(secondWord))
+                    {
+                        list = new List<T>();
+                        list.Add(thirdWord);
+
+                        dictionary.Add(secondWord, list);
+                    }
+                    else
+                    {
+                        list = dictionary[secondWord];
+                        Debug.Assert(list != null);
+                        list.Add(thirdWord);
+                    }
                 }
             }
             catch (Exception)

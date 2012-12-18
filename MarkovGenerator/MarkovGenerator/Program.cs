@@ -42,6 +42,7 @@ namespace ProgrammingChallenge
 
             try
             {
+                // REVIEW: Use StreamReader.ReadLine() for large files.
                 inputText = File.ReadAllText(sourceFileName);
             }
             catch (Exception ex)
