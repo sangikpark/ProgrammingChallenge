@@ -113,10 +113,7 @@ namespace ProgrammingChallenge
                 else
                 {
                     firstWord = secondWord;
-                    Debug.Assert(!string.IsNullOrEmpty(firstWord));
-
                     secondWord = thirdWord;
-                    Debug.Assert(!string.IsNullOrEmpty(secondWord));
                 }
             }
         }
