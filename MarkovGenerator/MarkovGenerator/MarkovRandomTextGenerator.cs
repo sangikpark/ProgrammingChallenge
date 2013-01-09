@@ -141,7 +141,7 @@ namespace ProgrammingChallenge
             Random random = new Random();
 
             // REVIEW: We can use the while (true) loop here because all sentences
-            // end with sentence enders,
+            // end with sentence enders.
             while (true)
             {
                 try
